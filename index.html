@@ -12,43 +12,67 @@
   </head>
   <body>
     <main>
-      <form action="">
-        <input type="text" autocomplete="off" id="valueSearch" />
-        <button>
+      <form action="" aria-label="Search for weather">
+        <input 
+          type="text" 
+          autocomplete="off" 
+          id="valueSearch" 
+          placeholder="Search city..."
+          aria-label="City search input"
+        />
+        <button type="submit" aria-label="Search">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
 
+      <button id="geolocationBtn" class="geolocation-btn" aria-label="Use my location">
+        <i class="fa-solid fa-location-crosshairs"></i>
+        <span>Use my location</span>
+      </button>
+
+      <div id="errorMessage" class="error-message" role="alert" aria-live="polite"></div>
+
       <section class="result">
-        <figure class="name" id="city">
-          <figcaption>Djibouti</figcaption>
-          <img src="https://flagsapi.com/DJ/shiny/24.png" />
-        </figure>
-        <figure class="temperature">
-          <img src="https://openweathermap.org/img/wn/02n@4x.png" />
-          <figcaption>
-            <span>32</span>
-            <sup>o</sup>
-          </figcaption>
-        </figure>
-        <p class="description">few clouds</p>
-        <ul>
-          <li>
-            <span>Clouds</span>
-            <i class="fa-solid fa-cloud"></i>
-            <span id="clouds">23</span>%
-          </li>
-          <li>
-            <span>Humidity</span>
-            <i class="fa-solid fa-droplet"></i>
-            <span id="humidity">26</span>%
-          </li>
-          <li>
-            <span>Pressure</span>
-            <i class="fa-solid fa-gauge"></i>
-            <span id="pressure">1003</span>hPa
-          </li>
-        </ul>
+        <div id="loadingSpinner" class="loading-spinner" aria-hidden="true">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <i class="fa-solid fa-cloud-sun"></i>
+          <p>Search for a city or use your location to see the weather</p>
+        </div>
+
+        <div id="weatherContent" class="weather-content" style="display: none;">
+          <figure class="name" id="city">
+            <figcaption>Djibouti</figcaption>
+            <img src="https://flagsapi.com/DJ/shiny/24.png" alt="Country flag" />
+          </figure>
+          <figure class="temperature">
+            <img src="https://openweathermap.org/img/wn/02n@4x.png" alt="Weather icon" />
+            <figcaption>
+              <span>32</span>
+              <sup>o</sup>
+            </figcaption>
+          </figure>
+          <p class="description">few clouds</p>
+          <ul>
+            <li>
+              <span>Clouds</span>
+              <i class="fa-solid fa-cloud"></i>
+              <span id="clouds">23</span>%
+            </li>
+            <li>
+              <span>Humidity</span>
+              <i class="fa-solid fa-droplet"></i>
+              <span id="humidity">26</span>%
+            </li>
+            <li>
+              <span>Pressure</span>
+              <i class="fa-solid fa-gauge"></i>
+              <span id="pressure">1003</span>hPa
+            </li>
+          </ul>
+        </div>
       </section>
     </main>
 
